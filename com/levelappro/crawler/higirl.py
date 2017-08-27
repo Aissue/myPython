@@ -10,6 +10,7 @@ def savefile(data):
     f.close()
 # savefile(data)
 
+
 url = 'http://date.jobbole.com/page/1/'
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/51.0.2704.63 Safari/537.36'}
@@ -39,9 +40,12 @@ for detail in girl_info_detail:
     new_soup = bs(new_html, 'html.parser')
     new_detail = new_soup.find_all('div', attrs={'class', 'p-entry'})
     for target in new_detail:
-        result = target.find_all('p')[15].getText()
-        test = re.findall(r"[\w']+", result)
-        predel_list = predel_list + test[1:]
+        result = target.find_all('p')
+        for p in result:
+            text = p.getText()
+            if '要求' in text:
+                temp = re.findall(r"[\w']+", text)
+                predel_list = predel_list + temp[1:]
 
 print("".join(predel_list))
 
