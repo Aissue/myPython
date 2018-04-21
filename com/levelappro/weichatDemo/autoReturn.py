@@ -14,11 +14,10 @@ def text_reply(msg):
                          msg['User']['NickName'],
                          msg['Text']), 'filehelper')
         # 回复给好友
-        return u'我是七七，现在在忙...稍后回复亲...\n已经收到您的的信息：%s\n' % (msg['Text'])
+        return u'阿弥陀佛，施主，贫僧已经知晓：%s\n' % (msg['Text'])
 
 if __name__ == '__main__':
     itchat.auto_login()
-
     # 获取自己的UserName
     myUserName = itchat.get_friends(update=True)[0]["UserName"]
     itchat.run()
